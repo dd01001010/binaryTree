@@ -5,7 +5,7 @@ int main(){
 
     int treeKeys[9] = {23,45,34,7,56,9,56,43,97}; //{95,3,11,25,74,81,99,14,42};    
     
-    cout << "Print in order, before adding numbers" << endl;
+    cout << "Print in order, before adding numbers **This is a test**" << endl;
     bsTree.printInOrder();
 
     for(int i; i < 9; i++){
