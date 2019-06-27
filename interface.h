@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <string>
 using namespace std;
 
 class BST{
@@ -26,6 +27,6 @@ class BST{
         node* CreateLeaf(int key);
         void addLeaf(int key);
         void printInOrder();
-
+        void usrOptions();
 };
 #endif
