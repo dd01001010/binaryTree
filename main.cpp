@@ -4,53 +4,17 @@ int main()
 {
     BST bsTree;
     bsTree.usrOptions();
-
-    // int treeKeys[9] = {23,45,34,7,56,9,56,43,97}; //{95,3,11,25,74,81,99,14,42};
-
-    // //prompt to ask user weither to use existing set, or create set
-    // char usrChoice = 0;
-    // cout << "would you like to use existing set, or create a set? (Y)es create, (N)o use existing" << endl;
-    // cin >> usrChoice;
-    // if(usrChoice == 0){
-    //     cout << "You did not enter a choice";
-    // }else
-    // {
-    //     switch (usrChoice)
-    //     {
-    //     case 'y' | 'Y':
-    //         cout << " you picked yes" << endl;
-    //         system("pause");
-    //         break;
-    //     case 'n' | 'N':
-    //         cout << " you picked no" << endl;
-    //         system("pause");
-    //         break;
-    //     }
-    // }
-
-    //system("clear");
-
-    // cout << "Print in order, before adding numbers" << endl;
-    // bsTree.printInOrder();
-
-    // for(int i = 0; i < 9; i++){
-    //     bsTree.addLeaf(treeKeys[i]);
-    // }
-
-    // cout << "Print in order, after adding numbers" << endl;
-
-    // bsTree.printInOrder();
-
     return 0;
 }
 
 void BST::usrOptions()
 {
-
     //prompt to ask user weither to use existing set, or create set
     char usrChoice = 0;
-    cout << "would you like to use existing set, or create a set? (Y)es create, (N)o use existing" << endl;
+    cout << "would you like to use existing set, or create a number set? (Y) to create a number set, (N) to use existing number set" << endl;
     cin >> usrChoice;
+    system("clear");
+
     if (usrChoice == 0)
     {
         cout << "You did not enter a choice";
@@ -60,45 +24,52 @@ void BST::usrOptions()
         switch (usrChoice)
         {
         case 'y' | 'Y':
-            //must use ptr's if user is picking set size, and set items
+            //must use ptr's if user is picking set alocation size, and list of set values
             int *array;
-            
             cout << "How large is number set ?" << endl;
             int uSize;
             cin >> uSize;
             system("clear");
 
-            cout << "Enter your number set" << endl;
+            cout << "Enter your list of values for number set" << endl;
             array = new int[uSize];
             
-            for (int i = 0; i < uSize; i++)
+            int hldS;
+            hldS = uSize;
+
+            //off by 1 bug fixed ;)
+            for (int i = 0; i <= uSize -1; i++)
             {
+                cout << hldS << " " << "Remaining inputs: " << endl;
                 cin >> array[i];
+                hldS--;
             }
 
             cout << "print numbers in order ? enter for 'Y' for yes" << endl;
             char organizeNums;
             cin >> organizeNums;
+            system("clear");
 
-            if(organizeNums = 'Y' | 'y'){
-                for (int i = 0; i < 9; i++){addLeaf(array[i]);
-                cout << "Print in order, after adding numbers" << endl;
-                printInOrder();
-                }    
-            }else
+            //switch worked better than ifElse's o_O
+            switch (organizeNums)
             {
-                cout << "Your tree" << endl;
-                
+            case 'y' | 'Y':
+                for (int k = 0; k < uSize; k++)
+                {
+                    addLeaf(array[k]);
+                }
+                cout << "Print in order, after adding numbers" << endl;
+                    printInOrder();
+                    cout << " " << endl;
+                break;
+            default:
+                cout << "number set unordered " << endl;
+                for (int a = 0; a < uSize; a++)
+                {
+                 cout << array[a] << endl;
+                }
+                break;
             }
-            
-
-
-            // cout << " values in set " << endl;
-            // for (int k = 0; k < uSize; k++)
-            // {
-            //     cout << array[k] << endl;
-            // }
-            
             break;
         case 'n' | 'N':
             int treeKeys[9] = {23, 45, 34, 7, 56, 9, 56, 43, 97}; //{95,3,11,25,74,81,99,14,42};
@@ -106,7 +77,10 @@ void BST::usrOptions()
             cout << "Print in order, before adding numbers" << endl;
             printInOrder();
 
-            for (int i = 0; i < 9; i++){addLeaf(treeKeys[i]);}
+            for (int i = 0; i < 9; i++)
+            {
+                addLeaf(treeKeys[i]);
+            }
 
             cout << "Print in order, after adding numbers" << endl;
             printInOrder();
