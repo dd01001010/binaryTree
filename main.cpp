@@ -55,7 +55,7 @@ void BST::usrOptions()
                 hldS--;
             }
 
-            cout << "print numbers in order ? enter for 'Y' for yes" << endl;
+            cout << "print numbers in order ? enter 'Y' for yes" << endl;
             char organizeNums;
             cin >> organizeNums;
             system("clear");
@@ -82,18 +82,34 @@ void BST::usrOptions()
             }
             break;
         case 'n' | 'N':
-            int treeKeys[9] = {23, 45, 34, 7, 56, 9, 56, 43, 97}; //{95,3,11,25,74,81,99,14,42};
+            int treeKeys[SIZE] = {23, 45, 34, 7, 56, 9, 56, 43, 987};
 
-            cout << "Print in order, before adding numbers" << endl;
-            printInOrder();
+            //{95,3,11,25,74,81,99,14,42};
+            cout << "Print in order (y) or print as is (n)" << endl;
+            char printPref = 'n' | 'N';
+            cin >> printPref;
+            system("clear");
 
-            for (int i = 0; i < 9; i++)
+            switch (printPref)
             {
-                addLeaf(treeKeys[i]);
-            }
+            case 'y' | 'Y':
+                
+                cout << "Printing in order" << endl;
+                for (int i = 0; i < SIZE; i++)
+                {
+                    addLeaf(treeKeys[i]);
+                }
+                printInOrder();
+                break;
 
-            cout << "Print in order, after adding numbers" << endl;
-            printInOrder();
+            case 'n' | 'N':
+                cout << "number set unordered " << endl;
+                for (int b = 0; b < SIZE; b++)
+                {
+                    cout << treeKeys[b] << endl;
+                }
+                break;
+            }
             break;
         }
     }
@@ -146,8 +162,7 @@ void BST::addLeafPriv(int key, node *ptr)
     else
     {
 
-        cout << " The key " << key << " has already been"
-             << " added to tree " << endl;
+        cout << " The key " << key << " exist " << endl;
     }
 
 } //end addLeaf
@@ -177,24 +192,3 @@ void BST::printInOrderPriv(node *ptr)
     } //end else
 
 } // end inordPriv
-
-/*
-
-    git rngpic menu 
-
-
-    do
-	{
-		obj.great();
-
-		cout << "Do you want to continue ?\n " << endl;
-		cout << "Enter (Y)es or (Q)uit : ";
-		cin >> usr_choice;
-		cin.ignore();									//add in class
-	}													// close do
-	while ((usr_choice == 'Y') || (usr_choice == 'y')); //check condition
-
-
-
-
- */

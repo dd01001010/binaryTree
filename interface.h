@@ -6,6 +6,8 @@
 #include <string>
 using namespace std;
 
+int SIZE = 9;
+
 class BST{
     private:
 
