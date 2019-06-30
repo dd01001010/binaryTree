@@ -3,7 +3,16 @@
 int main()
 {
     BST bsTree;
-    bsTree.usrOptions();
+    char usr_choice = 'Q' || 'q';
+    do
+    {
+        bsTree.usrOptions();
+        cout << "Do you want to continue ?\n " << endl;
+        cout << "Enter (Y)es or (Q)uit : ";
+        cin >> usr_choice;
+        cin.ignore(); //add in class
+    }                 // close do
+    while ((usr_choice == 'Y') || (usr_choice == 'y'));
     return 0;
 }
 
@@ -33,14 +42,15 @@ void BST::usrOptions()
 
             cout << "Enter your list of values for number set" << endl;
             array = new int[uSize];
-            
+
             int hldS;
             hldS = uSize;
 
             //off by 1 bug fixed ;)
-            for (int i = 0; i <= uSize -1; i++)
+            for (int i = 0; i <= uSize - 1; i++)
             {
-                cout << hldS << " " << "Remaining inputs: " << endl;
+                cout << hldS << " "
+                     << "Remaining inputs: " << endl;
                 cin >> array[i];
                 hldS--;
             }
@@ -59,14 +69,14 @@ void BST::usrOptions()
                     addLeaf(array[k]);
                 }
                 cout << "Print in order, after adding numbers" << endl;
-                    printInOrder();
-                    cout << " " << endl;
+                printInOrder();
+                cout << " " << endl;
                 break;
             default:
                 cout << "number set unordered " << endl;
                 for (int a = 0; a < uSize; a++)
                 {
-                 cout << array[a] << endl;
+                    cout << array[a] << endl;
                 }
                 break;
             }
@@ -167,3 +177,24 @@ void BST::printInOrderPriv(node *ptr)
     } //end else
 
 } // end inordPriv
+
+/*
+
+    git rngpic menu 
+
+
+    do
+	{
+		obj.great();
+
+		cout << "Do you want to continue ?\n " << endl;
+		cout << "Enter (Y)es or (Q)uit : ";
+		cin >> usr_choice;
+		cin.ignore();									//add in class
+	}													// close do
+	while ((usr_choice == 'Y') || (usr_choice == 'y')); //check condition
+
+
+
+
+ */
